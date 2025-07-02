@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/erik/mlops/mlruns/256786843031492128/328cf3742a7e4cb6874dc590cdb516e1/artifacts
+end_time: 1751290530309
+entry_point_name: ''
+experiment_id: '256786843031492128'
+lifecycle_stage: active
+run_id: 328cf3742a7e4cb6874dc590cdb516e1
+run_name: melodic-bass-926
+run_uuid: 328cf3742a7e4cb6874dc590cdb516e1
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1751290530255
+status: 4
+tags: []
+user_id: erik

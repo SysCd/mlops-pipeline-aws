@@ -1,0 +1,15 @@
+artifact_uri: file:///Users/erik/mlops/mlruns/256786843031492128/6e7488d46edf4cb9a5a4f7b2453744b0/artifacts
+end_time: 1751290665903
+entry_point_name: ''
+experiment_id: '256786843031492128'
+lifecycle_stage: active
+run_id: 6e7488d46edf4cb9a5a4f7b2453744b0
+run_name: upset-deer-18
+run_uuid: 6e7488d46edf4cb9a5a4f7b2453744b0
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1751290664434
+status: 3
+tags: []
+user_id: erik
