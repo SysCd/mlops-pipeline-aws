@@ -19,7 +19,7 @@ jobs:
 
       - name: Copy code to EC2
         run: |
-          run: scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r . ec2-user@18.175.63.113:~/
+          scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r . ec2-user@18.175.63.113:~/
 
       - name: Deploy to EC2 and restart backend
         run: |
