@@ -14,13 +14,13 @@ jobs:
       - name: Set up SSH key
         run: |
           mkdir -p ~/.ssh
-          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
-          chmod 600 ~/.ssh/id_rsa
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/github-actions-ec2
+          chmod 600 ~/.ssh/github-actions-ec2
 
-        # Testing
+        # Copy directory to EC2
       - name: Copy code to EC2
         run: |
-          scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r . ec2-user@18.175.63.113:~/
+          scp -i ~/.ssh/github-actions-ec2 -o StrictHostKeyChecking=no -r . ec2-user@18.175.63.113:~/
 
       - name: Deploy to EC2 and restart backend
         run: |
