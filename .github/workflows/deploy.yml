@@ -17,6 +17,7 @@ jobs:
           echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
 
+        # Testing
       - name: Copy code to EC2
         run: |
           scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r . ec2-user@18.175.63.113:~/
