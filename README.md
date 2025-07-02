@@ -52,8 +52,7 @@
 
 - **No secrets or keys tracked in Git**
 - **For demo/prototype—secure & productionize as needed**
-- **Questions?** Open an issue or fork away
 
 ---
 
-**Built for learning, showcasing, and getting hired.**
+**Built for learning & showcasing.**
