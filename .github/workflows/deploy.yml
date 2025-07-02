@@ -19,7 +19,7 @@ jobs:
 
       - name: Copy code to EC2
         run: |
-          scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r /mlops ec2-user@YOUR_EC2_PUBLIC_IP:~/
+          scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r /mlops ec2-user@18.175.63.113 :~/
 
       - name: Deploy to EC2 and restart backend
         run: |
