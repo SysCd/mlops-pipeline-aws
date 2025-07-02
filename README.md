@@ -7,8 +7,6 @@
 ## End-to-End MLOps Pipeline
 
 ![MLOps Pipeline Diagram](diagrams/mlpipe.png)
-**How it works:**  
-Code, models, and infra are versioned and deployed automatically from GitHub to AWS EC2 using CI/CD, with Docker and Terraform for full reproducibility.
 
 ## Overview
 
