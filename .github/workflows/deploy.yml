@@ -24,7 +24,7 @@ jobs:
 
       - name: Deploy to EC2 and restart backend
         run: |
-          ssh -o StrictHostKeyChecking=no ec2-user@18.175.63.113 << 'ENDSSH'
+          ssh -i ~/.ssh/github-actions-ec2 -o StrictHostKeyChecking=no ec2-user@18.175.63.113 << 'ENDSSH'
             cd ~/mlops-pipeline-aws
             git pull origin main
             sudo docker build -t mlops-api ./app-backend
