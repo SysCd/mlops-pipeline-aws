@@ -1,8 +1,8 @@
-name: Deploy to EC2
+name: FastAPI Deploy
 
 on:
   push:
-    branches: [main] # or "master", or whatever your deploy branch is
+    branches: [main]
 
 jobs:
   deploy:
@@ -10,11 +10,23 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+
       - name: Set up SSH key
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/id_rsa
           chmod 600 ~/.ssh/id_rsa
-      - name: Deploy to EC2
+
+      - name: Copy code to EC2
         run: |
-          ssh -o StrictHostKeyChecking=no ec2-user@13.40.129.198 'echo "Deployment works!"'
+          scp -i ~/.ssh/id_rsa -o StrictHostKeyChecking=no -r /mlops ec2-user@YOUR_EC2_PUBLIC_IP:~/
+
+      - name: Deploy to EC2 and restart backend
+        run: |
+          ssh -o StrictHostKeyChecking=no ec2-user@18.175.63.113 << 'ENDSSH'
+            cd ~/mlops-pipeline-aws
+            git pull origin main
+            sudo docker build -t mlops-api ./app-backend
+            sudo docker stop $(sudo docker ps -q --filter ancestor=mlops-api) || true
+            sudo docker run -d -p 5000:5000 mlops-api
+          ENDSSH
