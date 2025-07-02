@@ -4,6 +4,10 @@
 
 ---
 
+## End-to-End MLOps Pipeline
+
+![MLOps Pipeline Diagram](diagrams/mlpipe.png)
+
 ## Overview
 
 - **Data ➡️ ML ➡️ Ops:** Modern MLOps stack, everything containerized and automated
