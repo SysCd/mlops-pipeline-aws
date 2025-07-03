@@ -68,7 +68,7 @@ resource "aws_security_group" "mlops_sg" {
 
 resource "aws_key_pair" "mlops_key" {
   key_name   = "mlops-key-v2"
-  public_key = file("/Users/erik/mlops/ML-Key.pub")
+  public_key = file("${path.module}/keys/ML-Key.pub")
 }
 
 

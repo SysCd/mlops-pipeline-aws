@@ -9,3 +9,4 @@ terraform.tfstate
 terraform.tfstate.backup
 crash.log
 AwsKeys/
+terraform/keys/ML-Key.pem
