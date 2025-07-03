@@ -115,6 +115,8 @@ terraform {
     region         = "eu-west-2"
   }
 }
+
+
 output "instance_public_ip" {
   value = aws_instance.mlops_ec2.public_ip
 }
