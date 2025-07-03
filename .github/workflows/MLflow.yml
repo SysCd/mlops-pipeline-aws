@@ -26,11 +26,11 @@ jobs:
           ssh -i ~/.ssh/github-actions-ec2 -o StrictHostKeyChecking=no ec2-user@18.135.216.139 << 'ENDSSH'
             cd ~/mlops
             # Build the latest Docker image
-            sudo docker build -t mlops-api ./mlflow
-            # Stop and remove any existing container using the mlops-api image
-            sudo docker stop $(sudo docker ps -q --filter ancestor=mlops-api) || true
-            sudo docker rm $(sudo docker ps -a -q --filter ancestor=mlops-api) || true
+            sudo docker build -t mlops-mlflow ./mlflow
+            # Stop and remove any existing container using the mlops-mlflow image
+            sudo docker stop $(sudo docker ps -q --filter ancestor=mlops-mlflow) || true
+            sudo docker rm $(sudo docker ps -a -q --filter ancestor=mlops-mlflowi) || true
 
             # Run the new container
-            sudo docker run -d --name mlops-api -p 8000:8000 mlops-api
+            sudo docker run -d --name mlops-api -p 8000:8000 mlops-mlflow
           ENDSSH
