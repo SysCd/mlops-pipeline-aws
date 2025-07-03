@@ -97,14 +97,12 @@ user_data = <<-EOF
   }
 }
 
-resource "aws_eip" "static" {
-  instance = aws_instance.mlops_ec2.id
-  
-  tags = {
-    Name = "mlops-static-ip"
-  }
-}
 
+# First, allocate the EIP outside of Terraform and get its Allocation ID (from AWS console)
+resource "aws_eip_association" "eip_assoc" {
+  instance_id   = aws_instance.mlops_ec2.id
+  allocation_id = "eipassoc-0f2f74038b933d3de"
+}
 
 
 # Remote S3 backend to keep track of file changes
