@@ -1,0 +1,36 @@
+name: MLflow Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up SSH key
+        run: |
+          mkdir -p ~/.ssh
+          echo "${{ secrets.EC2_SSH_KEY }}" > ~/.ssh/github-actions-ec2
+          chmod 600 ~/.ssh/github-actions-ec2
+
+        # Copy directory to EC2-
+      - name: Copy code to EC2
+        run: |
+          scp -i ~/.ssh/github-actions-ec2 -o StrictHostKeyChecking=no -r * ec2-user@18.135.216.139:~/mlops/
+
+      - name: Deploy to EC2 and restart backend
+        run: |
+          ssh -i ~/.ssh/github-actions-ec2 -o StrictHostKeyChecking=no ec2-user@18.135.216.139 << 'ENDSSH'
+            cd ~/mlops
+            # Build the latest Docker image
+            sudo docker build -t mlops-api ./mlflow
+            # Stop and remove any existing container using the mlops-api image
+            sudo docker stop $(sudo docker ps -q --filter ancestor=mlops-api) || true
+            sudo docker rm $(sudo docker ps -a -q --filter ancestor=mlops-api) || true
+
+            # Run the new container
+            sudo docker run -d --name mlops-api -p 8000:8000 mlops-api
+          ENDSSH
