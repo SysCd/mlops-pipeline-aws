@@ -97,10 +97,17 @@ user_data = <<-EOF
   }
 }
 
-
+resource "aws_eip" "static" {
+  instance = aws_instance.mlops_ec2.id
+  
+  tags = {
+    Name = "mlops-static-ip"
+  }
+}
 
 
 
 output "instance_public_ip" {
   value = aws_instance.mlops_ec2.public_ip
 }
+
