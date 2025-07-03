@@ -101,7 +101,7 @@ user_data = <<-EOF
 # First, allocate the EIP outside of Terraform and get its Allocation ID (from AWS console)
 resource "aws_eip_association" "eip_assoc" {
   instance_id   = aws_instance.mlops_ec2.id
-  allocation_id = "eipassoc-0f2f74038b933d3de"
+  allocation_id = "eipalloc-0a04ecfec78aa67fa"
 }
 
 
