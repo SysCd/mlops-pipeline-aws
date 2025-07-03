@@ -3,3 +3,9 @@
 *.key
 .env
 .terraform/
+*.tfstate
+*.tfstate.*
+terraform.tfstate
+terraform.tfstate.backup
+crash.log
+AwsKeys/
