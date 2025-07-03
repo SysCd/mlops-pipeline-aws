@@ -110,14 +110,11 @@ resource "aws_eip" "static" {
 # Remote S3 backend to keep track of file changes
 terraform {
   backend "s3" {
-    bucket         = "my-terraform-state-bucket"
-    key            = "mlops/terraform.tfstate"
+    bucket         = "tf-state-bucket-mlops-876512"
+    key            = "env:/terraform.tfstate"
     region         = "eu-west-2"
-    dynamodb_table = "terraform-lock-table"
   }
 }
-
-
 output "instance_public_ip" {
   value = aws_instance.mlops_ec2.public_ip
 }
