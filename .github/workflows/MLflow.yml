@@ -32,5 +32,5 @@ jobs:
             sudo docker rm $(sudo docker ps -a -q --filter ancestor=mlops-mlflowi) || true
 
             # Run the new container
-            sudo docker run -d --name mlops-api -p 8000:8000 mlops-mlflow
+            sudo docker run -d --name mlops-mlflow -p 8000:8000 mlops-mlflow
           ENDSSH
