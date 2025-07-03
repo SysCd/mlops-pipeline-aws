@@ -19,11 +19,11 @@ jobs:
         # Copy directory to EC2-
       - name: Copy code to EC2
         run: |
-          scp -i ~/.ssh/github-actions-ec2 -o StrictHostKeyChecking=no -r * ec2-user@18.135.95.252:~/mlops/
+          scp -i ~/.ssh/github-actions-ec2 -o StrictHostKeyChecking=no -r * ec2-user@18.135.216.139:~/mlops/
 
       - name: Deploy to EC2 and restart backend
         run: |
-          ssh -i ~/.ssh/github-actions-ec2 -o StrictHostKeyChecking=no ec2-user@18.175.63.113 << 'ENDSSH'
+          ssh -i ~/.ssh/github-actions-ec2 -o StrictHostKeyChecking=no ec2-user@18.135.216.139<< 'ENDSSH'
             cd ~/mlops-pipeline-aws
             git pull origin main
             sudo docker build -t mlops-api ./app-backend
